@@ -37,12 +37,7 @@ public class QueryFactory {
       + "'resource_Node' : {$exists : true}}";
 
   public static Pageable make_pagination(int pageNum, int pageSize, String sortProperty) {
-
-    if (sortProperty.charAt(0) == '-') {
-      return PageRequest.of(pageNum, pageSize, Sort.Direction.DESC, sortProperty.substring(1));
-    }
-
-    return PageRequest.of(pageNum, pageSize, Sort.Direction.ASC, sortProperty);
+    return PageRequest.of(pageNum, pageSize);
   }
 
   public static boolean isBool(String s) {
@@ -424,6 +419,6 @@ public class QueryFactory {
   public static Pageable setPagniateVariable(int start, int size, String sort) {
     int page = start;
     int pageSize = size;
-    return make_pagination(Math.max(0, page - 1), Math.min(200, pageSize), sort);
+    return make_pagination(Math.max(0, page - 1), Math.min(1000, pageSize), sort);
   }
 }
