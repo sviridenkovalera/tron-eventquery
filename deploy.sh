@@ -17,5 +17,5 @@ logtime=`date +%Y-%m-%d_%H-%M-%S`
  -XX:+PrintGCDateStamps -XX:+CMSParallelRemarkEnabled -XX:ReservedCodeCacheSize=256m\
  -XX:+CMSScavengeBeforeRemark -jar target/troneventquery-1.0.0-SNAPSHOT.jar >> query.log 2>&1 &
 
-sleep 10
+sleep 1
 echo "ok!"
