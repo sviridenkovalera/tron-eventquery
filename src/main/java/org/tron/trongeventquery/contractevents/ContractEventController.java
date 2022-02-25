@@ -250,13 +250,7 @@ public class ContractEventController {
   }
 
   private Pageable setPagniateVariable(int limit, String sort, int start) {
-
-    // variables for pagniate
-    int page = start;
-    int pageSize = limit;
-
-    return QueryFactory.make_pagination(Math.max(0,page - 1), Math.min(200,pageSize), sort);
-
+    return QueryFactory.make_pagination(start, limit, sort);
   }
 
   // get event list
@@ -411,7 +405,7 @@ public class ContractEventController {
   public Object findEventsByContractAddressAndEventNameTronGrid (
       @PathVariable String contractAddress,
       @PathVariable String eventName,
-      @RequestParam(value = "size", required = false, defaultValue = "20") int limit,
+      @RequestParam(value = "size", required = false, defaultValue = "1000") int limit,
       @RequestParam(value = "sort", required = false, defaultValue = "-timeStamp") String sort,
       @RequestParam(value = "start", required = false, defaultValue = "0") int start,
       @RequestParam(value = "since", required = false, defaultValue = "0") long timestamp,
